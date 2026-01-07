@@ -18,6 +18,8 @@ root_path = os.path.abspath(".")
 data_path = f"{root_path}/data/raw/"
 
 
+# Potentially make some functions for data types explicitly (.csv, .xslx, etc)
+# then make other functions for the actual data set types.
 def get_frac_fluid_data():
     for key, url in urls.items():
         os.makedirs(f"{data_path}", exist_ok=True)
@@ -28,5 +30,3 @@ def get_frac_fluid_data():
             print(f"Download of {filenames[key]} Successful")
         else:
             print(f"Failed to download {filenames[key]}: {response.status_code}")
-
-# print(data_path)
