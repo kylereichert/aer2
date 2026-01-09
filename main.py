@@ -1,6 +1,15 @@
-from db.connection import connection_test
+import os
+import pandas as pd
+from db.connection import connection_test, create_table
 from downloader.data import get_frac_fluid_data
 
-print(connection_test())
+root = os.path.abspath(".")
+raw_data_path = f"{root}/data/raw"
 
-get_frac_fluid_data()
+#print(connection_test())
+
+# get_frac_fluid_data()
+
+df = pd.read_csv(f"{raw_data_path}/SummaryChemical-WaterUse.csv", sep='|')
+
+create_table(df, "summarychemical_wateruse")
